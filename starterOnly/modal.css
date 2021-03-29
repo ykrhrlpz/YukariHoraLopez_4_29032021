@@ -480,6 +480,23 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .topnav
+  {
+    height: 3.5rem;
+    line-height: 3.5rem;
+  }
+  .topnav a.icon 
+  {
+    color: #fe142f;
+  }
+  .header-logo
+  {
+    padding-left: 16px;
+  }
+  .header-logo img 
+  {
+    width: 8rem;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
