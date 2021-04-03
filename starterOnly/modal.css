@@ -326,7 +326,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -478,6 +479,26 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+.thankyou
+{
+  padding: 15px 8%;
+  margin: 15px auto;
+  height: 500px;
+  text-align: center;
+  line-height: 2;
+}
+
+.container
+{
+  display: flex;
+  align-items: center;
+}
+
+.content button
+{
+  margin-bottom: 1.5rem;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
@@ -565,6 +586,11 @@ footer {
   .margin-top
   {
     margin-top: 10px;
+  }
+
+  .thankyou
+  {
+    height: 83vh;
   }
 }
 
