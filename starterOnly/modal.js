@@ -24,20 +24,21 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-let container = document.createElement("div");
-let thankyouMessage = document.createElement("p");
-let closeButton = document.createElement("button");
-thankyouMessage.textContent = "Thank you for submitting your registration details";
-closeButton.textContent = "Close";
-modalContent.removeChild(modalBody);
-modalContent.appendChild(container);
-container.appendChild(thankyouMessage);
-modalContent.appendChild(closeButton);
+//Thank you messagge modal
+// let container = document.createElement("div");
+// let thankyouMessage = document.createElement("p");
+// let closeButton = document.createElement("button");
+// thankyouMessage.textContent = "Thank you for submitting your registration details";
+// closeButton.textContent = "Close";
+// modalContent.removeChild(modalBody);
+// modalContent.appendChild(container);
+// container.appendChild(thankyouMessage);
+// modalContent.appendChild(closeButton);
 
-console.log(modalBody);
-container.classList.add("thankyou");
-closeButton.classList.add("button", "btn-close");
-container.classList.add("container");
+// console.log(modalBody);
+// container.classList.add("thankyou");
+// closeButton.classList.add("button", "btn-close");
+// container.classList.add("container");
 
 // submitBtn.addEventListener("submit", () => {
 //   modalBody.text

@@ -480,6 +480,18 @@ input[data-error]::after {
   display: none;
 }
 
+.error-msg
+{
+  color: #e54858;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.hidden
+{
+  display: none;
+}
+
 .thankyou
 {
   padding: 15px 8%;
