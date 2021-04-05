@@ -511,6 +511,9 @@ input[data-error]::after {
 {
   margin-bottom: 1.5rem;
 }
+
+button:focus {outline: 0;}
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;

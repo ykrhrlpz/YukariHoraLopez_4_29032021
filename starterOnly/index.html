@@ -27,7 +27,7 @@
         </a>
       </div>
     </div>
-    <main>
+    <main id="main">
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -55,6 +55,7 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+              id="signup-form"
               name="reserve"
               action="index.html"
               method="get"
@@ -69,8 +70,9 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  required
                 /><br>
-                <div class="error-msg hidden">Please enter 2+ characters for name field.</div>
+                <div id="error-msg-first-name" class="error-msg hidden">Please enter 2+ characters for name field.</div>
               </div>
               <div
                 class="formData">
@@ -80,8 +82,9 @@
                   type="text"
                   id="last"
                   name="last"
+                  required
                 /><br>
-                <div class="error-msg hidden">Please enter 2+ characters for name field.</div>
+                <div id="error-msg-last-name" class="error-msg hidden">Please enter 2+ characters for name field.</div>
               </div>
               <div
                 class="formData">
@@ -91,7 +94,9 @@
                   type="email"
                   id="email"
                   name="email"
+                  required
                 /><br>
+                <div id="error-msg-email" class="error-msg hidden">Please enter valid email address for email field.</div>
               </div>
               <div
                 class="formData">
@@ -101,8 +106,9 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required
                 /><br>
-                <div class="error-msg hidden">You must enter your date of birth.</div>
+                <div id="error-msg-birthDate" class="error-msg hidden">You must enter your date of birth.</div>
               </div>
               <div
                 class="formData">
@@ -178,7 +184,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
-                <div class="error-msg hidden">You must choose one option.</div>
+                <div id="error-msg-location" class="error-msg hidden">You must choose one option.</div>
               </div>
 
               <div
@@ -200,15 +206,14 @@
                   <span class="checkbox-icon"></span>
                   Please sign me up to be notified about future events.
                 </label>
-                <div class="error-msg hidden">You must check to agree to terms and conditions.</div>
+                <div id="error-msg-checkbox" class="error-msg hidden">You must check to agree to terms and conditions.</div>
                 <br>
               </div>
-              <input
-                class="btn-submit"
+              <button
+                class="btn-submit button"
                 type="submit"
-                class="button"
-                value="Go"
-              />
+                disabled="true"
+                >Go</button>
             </form>
           </div>
         </div>
