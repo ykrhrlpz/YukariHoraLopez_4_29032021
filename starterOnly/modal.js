@@ -70,58 +70,63 @@ closeIcon.addEventListener("click", () => {
 
 //First Name Input Validation
 
-const validateFirstNameInputs = () => 
+const validateFirstLastNameInputs = (value) => 
 {
   
-  if (!firstNameInput.value || firstNameInput.value.length > 2)
+  if (!value || value.length < 2)
   {
     console.log("false");
-    
+
     firstNameInput.style.backgroundColor = "pink";
     return false;
   }
-  else if (firstNameInput.value.length >= 2 )
+  else
   {
-  console.log("true");
+    console.log("true");
+    firstNameInput.style.backgroundColor = "green";
     return true;
   }
 };
 
 // Form Validation for first name
-firstNameInput.addEventListener("input", (event) => 
+firstNameInput.addEventListener("input", () => 
 {
-  if (!event.target.value || event.target.value.length < 2)
-  {
-    console.log("error");
-    firstNameInput.style.backgroundColor = "pink";
+  validateFirstLastNameInputs(firstNameInput.value);
 
-    return false;
-  }
-  else if (event.target.value.length >= 2 )
-  {
-    firstNameInput.style.backgroundColor = "green";
+  // if (!event.target.value || event.target.value.length < 2)
+  // {
+  //   console.log("error");
+  //   firstNameInput.style.backgroundColor = "pink";
+
+  //   return false;
+  // }
+  // else
+  // {
+  //   firstNameInput.style.backgroundColor = "green";
   
-    return true;
-  }
+  //   return true;
+  // }
+
+
 });
 
 // Form Validation for last name
-lastNameInput.addEventListener("input", (event) => 
-{
-  if (!event.target.value || event.target.value.length < 2)
-  {
-    console.log("error");
-    lastNameInput.style.backgroundColor = "pink";
+// lastNameInput.addEventListener("input", (event) => 
+// {
+//   if (!event.target.value || event.target.value.length < 2)
+//   {
+//     console.log("error");
+//     lastNameInput.style.backgroundColor = "pink";
 
-    return false;
-  }
-  else if (event.target.value.length >= 2 )
-  {
-    lastNameInput.style.backgroundColor = "green";
+//     return false;
+//   }
+//   else if (event.target.value.length >= 2 )
+//   {
+//     lastNameInput.style.backgroundColor = "green";
   
-    return true;
-  }
-});
+//     return true;
+//   }
+// });
 
 // Form Validation for email adress
 
