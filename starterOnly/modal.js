@@ -22,7 +22,7 @@ const emailInput = document.getElementById("email");
 const birthDateInput = document.getElementById("birthdate");
 const quantityInput = document.getElementById("quantity");
 const closeIcon = document.querySelector(".close");
-const locationRadioButtons = document.getElementsByName("location");
+
 const checkboxOne = document.getElementById("checkbox1");
 const checkboxTwo = document.getElementById("checkbox2");
 
@@ -65,18 +65,11 @@ form.addEventListener("submit", event =>
   event.preventDefault();
   inputs.forEach((input) => 
   {
-    console.log(`${input.getAttribute("name")}: ${input.value}`)
-    console.log(`${input.getAttribute("name")}: ${input.value.length}`)
+    // console.log(`${input.getAttribute("name")}: ${input.value}`)
     if (!input.value || input.value.length < 2)
     {
       input.parentElement.classList.add("error")
     }
-    // else if (input.value.length < 2)
-    // {
-    //   console.log("error");
-    //   console.log(input.value.length);
-    //   input.parentElement.classList.add("error")
-    // }
     else
     {
       input.parentElement.classList.remove("error")
@@ -91,13 +84,39 @@ form.addEventListener("submit", event =>
           input.parentElement.classList.add("error")
         }
       }
+      else if (input.type == "radio")
+      {
+        if (validateRadioButton())
+        {
+          input.parentElement.classList.remove("error")
+        }
+        else
+        {
+          input.parentElement.classList.add("error")
+        }
+      }
     }
   })
 })
 
+
+//Function for Email Validation
 function validateEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
-// const validate = () => console.log("VALIDATED")
+//Function for Radio Button Validation 
+const validateRadioButton = () => 
+{
+  let valid = false;
+  const locationRadioButtons = document.getElementsByName("location");
+
+  for (let i = 0; i < locationRadioButtons.length; i++)
+  {
+    if (locationRadioButtons[i].checked)
+    {
+      return true;
+    }
+  }
+}

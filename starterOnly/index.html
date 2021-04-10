@@ -70,7 +70,7 @@
             > -->
               <div
                 class="formData">
-                <label>First Name</label><br>
+                <label for="first">First Name</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -81,7 +81,7 @@
               </div>
               <div
                 class="formData">
-                <label>Last Name</label><br>
+                <label for="last">Last Name</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -92,7 +92,7 @@
               </div>
               <div
                 class="formData">
-                <label>Email</label><br>
+                <label for="email">Email</label><br>
                 <input
                   class="text-control"
                   type="email"
@@ -103,7 +103,7 @@
               </div>
               <div
                 class="formData">
-                <label>Birthdate</label><br>
+                <label for="birthdate">Birthdate</label><br>
                 <input
                   class="text-control"
                   type="date"
@@ -114,7 +114,7 @@
               </div>
               <div
                 class="formData">
-                <label>How many tournaments have you attended? </label><br>
+                <label for="quantity">How many tournaments have you attended? </label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"><br>
                 <p id="error-text-tournaments" class="error-text ">Please enter how many tounaments you have attended in the past.</p>
               </div>
@@ -204,7 +204,10 @@
                 </label>
                 <div class="error-text ">You must check to agree to terms and conditions.</div>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input 
+                class="checkbox-input" 
+                type="checkbox" 
+                id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Please sign me up to be notified about future events.

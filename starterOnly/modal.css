@@ -199,7 +199,7 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
-input:focus
+input.text-control:focus
 {
   border: 3px solid #279e7a;
 }
@@ -235,6 +235,12 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
+#birthdate,
+.checkbox-label,
+.checkbox2-label
+{
+  cursor: pointer;
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
