@@ -199,6 +199,10 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+input:focus
+{
+  border: 3px solid #279e7a;
+}
 .text-control {
   margin: 0;
   padding: 8px;
@@ -480,16 +484,22 @@ input[data-error]::after {
   display: none;
 }
 
-.error-msg
+.error-text
 {
+  display: none;
   color: #e54858;
   font-size: 14px;
   margin-top: 5px;
 }
 
-.hidden
+.formData.error .error-text
 {
-  display: none;
+  display: block;
+}
+
+.formData.error input
+{
+  border: 3px solid #e54858;
 }
 
 .thankyou
