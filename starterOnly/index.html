@@ -54,73 +54,68 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form
-              id="signup-form"
-              name="reserve"
-              action="index.html"
-              method="get"
-             
-            >
             <!-- <form
               id="signup-form"
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+             
             > -->
-              <div
-                class="formData">
-                <label for="first">First Name</label><br>
+            <form
+              id="signup-form"
+              name="reserve"
+              action="index.html"
+              method="get"
+              onsubmit="return validateForm();"
+            >
+              <div class="formData">
+                <label for="formData-first">First Name</label><br>
                 <input
                   class="text-control"
                   type="text"
-                  id="first"
+                  id="formData-first"
                   name="first"
+                  gtgtgtg
                 /><br>
                 <p id="error-text-first-name" class="error-text ">Please enter 2+ characters for name field.</p>
               </div>
-              <div
-                class="formData">
-                <label for="last">Last Name</label><br>
+              <div class="formData">
+                <label for="formData-last">Last Name</label><br>
                 <input
                   class="text-control"
                   type="text"
-                  id="last"
+                  id="formData-last"
                   name="last"
                 /><br>
                 <p id="error-text-last-name" class="error-text ">Please enter 2+ characters for name field.</p>
               </div>
-              <div
-                class="formData">
-                <label for="email">Email</label><br>
+              <div class="formData">
+                <label for="formData-email">Email</label><br>
                 <input
                   class="text-control"
                   type="email"
-                  id="email"
+                  id="formData-email"
                   name="email"
                 /><br>
                 <p id="error-text-email" class="error-text ">Please enter valid email address for email field.</p>
               </div>
-              <div
-                class="formData">
-                <label for="birthdate">Birthdate</label><br>
+              <div class="formData">
+                <label for="formData-birthdate">Birthdate</label><br>
                 <input
                   class="text-control"
                   type="date"
-                  id="birthdate"
+                  id="formData-birthdate"
                   name="birthdate"
                 /><br>
                 <p id="error-text-birthDate" class="error-text ">Please enter your date of birth.</p>
               </div>
-              <div
-                class="formData">
-                <label for="quantity">How many tournaments have you attended? </label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"><br>
+              <div class="formData">
+                <label for="formData-quantity">How many tournaments have you attended? </label><br>
+                <input id="formData-quantity" type="number" class="text-control" name="quantity" min="0" max="99"><br>
                 <p id="error-text-tournaments" class="error-text ">Please enter how many tounaments you have attended in the past.</p>
               </div>
               <p class="text-label">Which location?</p>
-              <div
-                class="formData">
+              <div id="formData-location" class="formData">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -191,15 +186,14 @@
                 <p id="error-text-location" class="error-text ">Please choose one location.</p>
               </div>
 
-              <div
-                class="formData margin-top">
+              <div class="formData margin-top">
                 <input
                   class="checkbox-input"
                   type="checkbox"
-                  id="checkbox1"
+                  id="formData-terms"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1">
+                <label class="checkbox2-label" for="formData-terms">
                   <span class="checkbox-icon"></span>
                   I have read and I agree to GameOn's terms and conditions.
                 </label>
@@ -207,8 +201,8 @@
                 <input 
                 class="checkbox-input" 
                 type="checkbox" 
-                id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
+                id="formData-subscription" />
+                <label class="checkbox2-label" for="formData-subscription">
                   <span class="checkbox-icon"></span>
                   Please sign me up to be notified about future events.
                 </label>

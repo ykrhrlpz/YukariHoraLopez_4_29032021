@@ -1,202 +1,162 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+////////////////////////////////////////////////////////////
+//  VARIABLES
+////////////////////////////////////////////////////////////
 
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const form = document.getElementById("signup-form");
+////////// DOM Elements
+let modalbg = document.querySelector(".bground");
+let modalBtn = document.querySelectorAll(".modal-btn");
+let formData = document.querySelectorAll(".formData");
+let form = document.getElementById("signup-form");
+let submitBtn = document.querySelector(".btn-submit");
+let modalBody = document.querySelector(".modal-body");
+let modalContent = document.querySelector(".content");
+let closeIcon = document.querySelector(".close");
 
-const submitBtn = document.querySelector(".btn-submit");
-const modalBody = document.querySelector(".modal-body");
-const modalContent = document.querySelector(".content");
-// const firstNameInput = document.getElementById("first");
-// const lastNameInput = document.getElementById("last");
-// const emailInput = document.getElementById("email");
-// const birthDateInput = document.getElementById("birthdate");
-
-const closeIcon = document.querySelector(".close");
-
-
-
-// Thank you messagge modal
+////////// Thank you messagge modal
 let container = document.createElement("div");
 let thankyouMessage = document.createElement("p");
 let closeButton = document.createElement("button");
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+let locationRadioButtons = document.getElementsByName("location");
 
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
+// The spread operator turns form data into an array instead of a NodeList type
+// let validationDependencies = [...formData].map(section => [...section.querySelectorAll("input")])
+
+////////// Form inputs
+let formDataFirstName = document.getElementById("formData-first")
+let formDataLastName = document.getElementById("formData-last")
+let formDataEmail = document.getElementById("formData-email")
+let formDataBirthdate = document.getElementById("formData-birthdate")
+let formDataQuantity = document.getElementById("formData-quantity")
+let formDataLocation = [...document.getElementById("formData-location").querySelectorAll("input")]
+let formDataTerms = document.getElementById("formData-terms")
+let formDataSubscription = document.getElementById("formData-subscription")
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+//  FUNCTIONS
+////////////////////////////////////////////////////////////
+
+const editNav = () => 
+{
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") 
+    {
+        x.className += " responsive";
+    } 
+    else 
+    {
+        x.className = "topnav";
+    }
+}
+
+////////// launch modal form
+const launchModal = () =>
+{
+    modalbg.style.display = "block";
 }
 
 
-// Function to close a modal
+////////// Function to close a modal
 const closeModal = () =>
 {
-  modalbg.style.display = "none";
+    modalbg.style.display = "none";
 }
 
-// can i make a loop or something not to repeat?
-//Calling close modal function
-closeButton.addEventListener("click", () => {
-  closeModal();
-});
-
-closeIcon.addEventListener("click", () => {
-  closeModal();
-});
-
-
-
-//Function for Email Validation
-function validateEmail(email) {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-}
-
-//Function for Dropdown Menu Validation
-const ValidateDropdownMenu = (input) =>
+////////// Function for Text inputs
+const validateTextInput = (text, minLength) =>
 {
-  const quantityInput = document.getElementById("quantity");
-console.log(quantityInput);
-  if (!input.value)
-  {
-    console.log("false");
-    return false;
-  }
-console.log("true");
-  return true;
+    if (!text) return false
+    if (text.length >= minLength) return true
+    else return false
 }
 
-
-//Function for Radio Button Validation 
-const validateRadioButton = () => 
+////////// Function for Number inputs
+const validateNumberInput = (number, minNumber) =>
 {
-  const locationRadioButtons = document.getElementsByName("location");
-console.log(locationRadioButtons);
-  for (let i = 0; i < locationRadioButtons.length; i++)
-  {
-    if (locationRadioButtons[i].checked)
-    {
-      console.log("true");
-      return true;
-    }
-    else
-    {
-      console.log("false");
-      return false;
-    }
-   
-  }
+    if (!number) return false
+    if (number >= minNumber) return true
+    else return false
 }
 
-
-//Function for Checkbox Validation 
-const validateCheckbox = () =>
+////////// Function for Email Validation
+const validateEmailInput = (email) =>
 {
-  const checkboxOne = document.getElementById("checkbox1");
-  if (checkboxOne.checked)
-  {
-    return true;
-  }
-  
-  else
-  {
-    return false;
-  }
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }
 
+////////// Function for Radio Button Validation 
+const validateRadioInputSection = (radioSection) => 
+{
+    if (radioSection.filter(checkbox => checkbox.checked === true).length >= 1) return true
+    else return false
+}
 
+////////// Function for Checkbox Button Validation 
+const validateCheckbox = (checkbox) => 
+{
+    if (checkbox.checked) return true
+    else return false
+}
 
-// Function to show Thank you messagge after the form is submitted successfully.
+////////// Function to show Thank you messagge after the form is submitted successfully.
 const showSubmitSuccessMsg = () =>
 {
-  thankyouMessage.textContent = "Thank you for submitting your registration details";
-  closeButton.textContent = "Close";
-  modalContent.removeChild(modalBody);
-  modalContent.appendChild(container);
-  container.appendChild(thankyouMessage);
-  modalContent.appendChild(closeButton);
-  
-  container.classList.add("thankyou");
-  closeButton.classList.add("button", "btn-close");
-  container.classList.add("container");
+    thankyouMessage.textContent = "Thank you for submitting your registration details";
+    closeButton.textContent = "Close";
+    modalContent.removeChild(modalBody);
+    modalContent.appendChild(container);
+    container.appendChild(thankyouMessage);
+    modalContent.appendChild(closeButton);
+
+    container.classList.add("thankyou");
+    closeButton.classList.add("button", "btn-close");
+    container.classList.add("container");
 }
 
+const validateForm = () =>
+{
+    let validation = []
+    validation.push(validateTextInput(formDataFirstName.value, 2))
+    validation.push(validateTextInput(formDataLastName.value, 2))
+    validation.push(validateEmailInput(formDataEmail.value))
+    validation.push(validateTextInput(formDataBirthdate.value, 1))
+    validation.push(validateNumberInput(formDataQuantity.value, 0))
+    validation.push(validateRadioInputSection(formDataLocation))
+    validation.push(validateCheckbox(formDataTerms))
 
+    if (validation.filter(input => input === false).length >= 1) return false
+    else return true
+}
+////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////
+//  PROCESS
+////////////////////////////////////////////////////////////
+
+////////// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// can i make a loop or something not to repeat?
+////////// Calling close modal function
+closeButton.addEventListener("click", () => 
+{
+    closeModal();
+});
+
+closeIcon.addEventListener("click", () => 
+{
+    closeModal();
+});
 
 form.addEventListener("submit", event => 
 {
-  const inputs = document.querySelectorAll("form input");
-
   event.preventDefault();
-  inputs.forEach((input) => 
-  {
-    // console.log(`${input.getAttribute("name")}: ${input.value}`)
-    if (!input.value || input.value.length < 2)
-    {
-      input.parentElement.classList.add("error")
-    }
-    else
-    {
-      input.parentElement.classList.remove("error")
-     
-      if (input.type == "email")
-      {
-        if (validateEmail(input.value))
-        {
-          input.parentElement.classList.remove("error")
-        }
-        else
-        {
-          input.parentElement.classList.add("error")
-        }
-      }
-
-      else if (input.type == "number")
-      {
-        if (ValidateDropdownMenu(input.value))
-        {
-          input.parentElement.classList.remove("error")
-        }
-        else
-        {
-          input.parentElement.classList.add("error")
-        }
-      }
-
-      else if (input.type == "radio")
-      {
-        if (validateRadioButton())
-        {
-          input.parentElement.classList.remove("error")
-        }
-        else
-        {
-          input.parentElement.classList.add("error")
-        }
-      }
-
-      else if (input.type == "checkbox")
-      {
-        if (validateCheckbox())
-        {
-          input.parentElement.classList.remove("error")
-        }
-        else
-        {
-          input.parentElement.classList.add("error")
-        }
-      }
-    }
-  })
+  console.log(validateForm())
+  // showSubmitSuccessMsg();
 })
+////////////////////////////////////////////////////////////
