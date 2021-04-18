@@ -28,6 +28,7 @@ let formDataLastName = document.getElementById("formData-last")
 let formDataEmail = document.getElementById("formData-email")
 let formDataBirthdate = document.getElementById("formData-birthdate")
 let formDataQuantity = document.getElementById("formData-quantity")
+let formDataLocationGroup = document.getElementById("formData-location")
 let formDataLocation = [...document.getElementById("formData-location").querySelectorAll("input")]
 let formDataTerms = document.getElementById("formData-terms")
 let formDataSubscription = document.getElementById("formData-subscription")
@@ -67,16 +68,14 @@ const closeModal = () =>
 ////////// Function for Text inputs
 const validateTextInput = (text, minLength) =>
 {
-    if (!text) return false
-    if (text.length >= minLength) return true
+    if (text && text.length >= minLength) return true
     else return false
 }
 
 ////////// Function for Number inputs
 const validateNumberInput = (number, minNumber) =>
 {
-    if (!number) return false
-    if (number >= minNumber) return true
+    if (number && number >= minNumber) return true
     else return false
 }
 
@@ -101,6 +100,13 @@ const validateCheckbox = (checkbox) =>
     else return false
 }
 
+////////// Function for handling error message
+const handleErrorMessage = (element, condition) => 
+{
+    if (condition) element.classList.remove("error") 
+    else element.classList.add("error")
+}
+
 ////////// Function to show Thank you messagge after the form is submitted successfully.
 const showSubmitSuccessMsg = () =>
 {
@@ -119,14 +125,64 @@ const showSubmitSuccessMsg = () =>
 const validateForm = () =>
 {
     let validation = []
-    validation.push(validateTextInput(formDataFirstName.value, 2))
-    validation.push(validateTextInput(formDataLastName.value, 2))
-    validation.push(validateEmailInput(formDataEmail.value))
-    validation.push(validateTextInput(formDataBirthdate.value, 1))
-    validation.push(validateNumberInput(formDataQuantity.value, 0))
-    validation.push(validateRadioInputSection(formDataLocation))
-    validation.push(validateCheckbox(formDataTerms))
 
+    ////////// FIRST NAME
+    // Defining validation and adding to validation array.
+    let formDataFirstNameValidation = validateTextInput(formDataFirstName.value, 2)
+    validation.push(formDataFirstNameValidation)
+    // Handling error message based on validation result.
+    if (formDataFirstNameValidation) handleErrorMessage(formDataFirstName.parentElement, true)
+    else handleErrorMessage(formDataFirstName.parentElement, false)
+
+    ////////// LAST NAME
+    // Defining validation and adding to validation array.
+    let formDataLastNameValidation = validateTextInput(formDataLastName.value, 2)
+    validation.push(formDataLastNameValidation)
+    // Handling error message based on validation result.
+    if (formDataLastNameValidation) handleErrorMessage(formDataLastName.parentElement, true)
+    else handleErrorMessage(formDataLastName.parentElement, false)
+
+    ////////// EMAIL
+    // Defining validation and adding to validation array.
+    let formDataEmailValidation = validateEmailInput(formDataEmail.value)
+    validation.push(formDataEmailValidation)
+    // Handling error message based on validation result.
+    if (formDataEmailValidation) handleErrorMessage(formDataEmail.parentElement, true)
+    else handleErrorMessage(formDataEmail.parentElement, false)
+
+    ////////// BIRTHDATE
+    // Defining validation and adding to validation array.
+    let formDataBirthdateValidation = validateTextInput(formDataBirthdate.value, 1)
+    validation.push(formDataBirthdateValidation)
+    // Handling error message based on validation result.
+    if (formDataBirthdateValidation) handleErrorMessage(formDataBirthdate.parentElement, true)
+    else handleErrorMessage(formDataBirthdate.parentElement, false)
+
+    ////////// QUANTITY
+    // Defining validation and adding to validation array.
+    let formDataQuantityValidation = validateNumberInput(formDataQuantity.value, 0)
+    validation.push(formDataQuantityValidation)
+    // Handling error message based on validation result.
+    if (formDataQuantityValidation) handleErrorMessage(formDataQuantity.parentElement, true)
+    else handleErrorMessage(formDataQuantity.parentElement, false)
+
+    ////////// LOCATION
+    // Defining validation and adding to validation array.
+    let formDataLocationValidation = validateRadioInputSection(formDataLocation)
+    validation.push(formDataLocationValidation)
+    // Handling error message based on validation result.
+    if (formDataLocationValidation) handleErrorMessage(formDataLocationGroup, true)
+    else handleErrorMessage(formDataLocationGroup, false)
+
+    ////////// TERMS
+    // Defining validation and adding to validation array.
+    let formDataTermsValidation = validateCheckbox(formDataTerms)
+    validation.push(formDataTermsValidation)
+    // Handling error message based on validation result.
+    if (formDataTermsValidation) handleErrorMessage(formDataTerms.parentElement, true)
+    else handleErrorMessage(formDataTerms.parentElement, false)
+
+    ////////// TOTAL VALIDATION
     if (validation.filter(input => input === false).length >= 1) return false
     else return true
 }
@@ -156,7 +212,7 @@ closeIcon.addEventListener("click", () =>
 form.addEventListener("submit", event => 
 {
   event.preventDefault();
-  console.log(validateForm())
+  validateForm()
   // showSubmitSuccessMsg();
 })
 ////////////////////////////////////////////////////////////
