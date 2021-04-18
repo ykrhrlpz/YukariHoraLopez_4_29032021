@@ -19,9 +19,6 @@ let closeButton = document.createElement("button");
 
 let locationRadioButtons = document.getElementsByName("location");
 
-// The spread operator turns form data into an array instead of a NodeList type
-// let validationDependencies = [...formData].map(section => [...section.querySelectorAll("input")])
-
 ////////// Form inputs
 let formDataFirstName = document.getElementById("formData-first")
 let formDataLastName = document.getElementById("formData-last")
@@ -60,7 +57,6 @@ const launchModal = () =>
     formSubmitted = false
     modalbg.style.display = "block";
 }
-
 
 ////////// Function to clear form 
 const clearForm = () =>
@@ -102,7 +98,6 @@ const closeModal = () =>
 
     clearForm()
 }
-
 
 ////////// Function for Text inputs
 const validateTextInput = (text, minLength) =>
