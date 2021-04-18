@@ -33,6 +33,7 @@ let formDataLocation = [...document.getElementById("formData-location").querySel
 let formDataTerms = document.getElementById("formData-terms")
 let formDataSubscription = document.getElementById("formData-subscription")
 
+let formSubmitted = false
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
@@ -53,17 +54,55 @@ const editNav = () =>
 }
 
 ////////// launch modal form
+////////// set formSubmitted to false so everytime modal is opened, inputs are cleared.
 const launchModal = () =>
 {
+    formSubmitted = false
     modalbg.style.display = "block";
 }
 
 
-////////// Function to close a modal
+////////// Function to clear form 
+const clearForm = () =>
+{
+
+    ////////// clear the all the input value
+    formDataFirstName.value = ""
+    formDataLastName.value = ""
+    formDataEmail.value = ""
+    formDataBirthdate.value = ""
+    formDataQuantity.value = ""
+    formDataLocation.forEach(input => input.checked = false)
+    formDataTerms.checked = true
+    formDataSubscription.checked = false
+
+    ////////// clear the error message
+    handleErrorMessage(formDataFirstName.parentElement, true)
+    handleErrorMessage(formDataLastName.parentElement, true)
+    handleErrorMessage(formDataEmail.parentElement, true)
+    handleErrorMessage(formDataBirthdate.parentElement, true)
+    handleErrorMessage(formDataQuantity.parentElement, true)
+    handleErrorMessage(formDataLocationGroup, true)
+    handleErrorMessage(formDataTerms.parentElement, true)
+    handleErrorMessage(formDataSubscription.parentElement, true)
+}
+
 const closeModal = () =>
 {
     modalbg.style.display = "none";
+
+    ////////// If submitted removes the thank you message elements
+    if(formSubmitted)
+    {
+        modalContent.appendChild(modalBody);
+        modalContent.removeChild(container);
+        container.removeChild(thankyouMessage);
+        modalContent.removeChild(closeButton);
+    }
+
+    clearForm()
 }
+
 
 ////////// Function for Text inputs
 const validateTextInput = (text, minLength) =>
@@ -120,6 +159,9 @@ const showSubmitSuccessMsg = () =>
     container.classList.add("thankyou");
     closeButton.classList.add("button", "btn-close");
     container.classList.add("container");
+
+    ////////// formSubmitted is true becasue it is submitted
+    formSubmitted = true
 }
 
 const validateForm = () =>
@@ -211,8 +253,9 @@ closeIcon.addEventListener("click", () =>
 
 form.addEventListener("submit", event => 
 {
-  event.preventDefault();
-  validateForm()
-  // showSubmitSuccessMsg();
+    event.preventDefault();
+
+    ////////// if validateForm is true, showSubmitSuccessMsg will run.
+    if(validateForm()) showSubmitSuccessMsg()
 })
 ////////////////////////////////////////////////////////////
