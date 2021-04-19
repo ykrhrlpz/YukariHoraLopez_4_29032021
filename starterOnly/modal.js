@@ -102,15 +102,13 @@ const closeModal = () =>
 ////////// Function for Text inputs
 const validateTextInput = (text, minLength) =>
 {
-    if (text && text.length >= minLength) return true
-    else return false
+   return (text && text.length >= minLength) 
 }
 
 ////////// Function for Number inputs
 const validateNumberInput = (number, minNumber) =>
 {
-    if (number && number >= minNumber) return true
-    else return false
+   return (number && number >= minNumber) 
 }
 
 ////////// Function for Email Validation
@@ -123,15 +121,13 @@ const validateEmailInput = (email) =>
 ////////// Function for Radio Button Validation 
 const validateRadioInputSection = (radioSection) => 
 {
-    if (radioSection.filter(checkbox => checkbox.checked === true).length >= 1) return true
-    else return false
+    return (radioSection.filter(checkbox => checkbox.checked === true).length >= 1) 
 }
 
 ////////// Function for Checkbox Button Validation 
 const validateCheckbox = (checkbox) => 
 {
-    if (checkbox.checked) return true
-    else return false
+    return (checkbox.checked) 
 }
 
 ////////// Function for handling error message
@@ -165,59 +161,52 @@ const validateForm = () =>
 
     ////////// FIRST NAME
     // Defining validation and adding to validation array.
-    let formDataFirstNameValidation = validateTextInput(formDataFirstName.value, 2)
-    validation.push(formDataFirstNameValidation)
+    let isFormDataFirstNameValid = validateTextInput(formDataFirstName.value, 2)
+    validation.push(isFormDataFirstNameValid)
     // Handling error message based on validation result.
-    if (formDataFirstNameValidation) handleErrorMessage(formDataFirstName.parentElement, true)
-    else handleErrorMessage(formDataFirstName.parentElement, false)
+    handleErrorMessage(formDataFirstName.parentElement, isFormDataFirstNameValid)
 
     ////////// LAST NAME
     // Defining validation and adding to validation array.
-    let formDataLastNameValidation = validateTextInput(formDataLastName.value, 2)
-    validation.push(formDataLastNameValidation)
+    let isFormDataLastNameValid= validateTextInput(formDataLastName.value, 2)
+    validation.push(isFormDataLastNameValid)
     // Handling error message based on validation result.
-    if (formDataLastNameValidation) handleErrorMessage(formDataLastName.parentElement, true)
-    else handleErrorMessage(formDataLastName.parentElement, false)
+    handleErrorMessage(formDataLastName.parentElement, isFormDataLastNameValid)
 
     ////////// EMAIL
     // Defining validation and adding to validation array.
-    let formDataEmailValidation = validateEmailInput(formDataEmail.value)
-    validation.push(formDataEmailValidation)
+    let isFormDataEmailValid = validateEmailInput(formDataEmail.value)
+    validation.push(isFormDataEmailValid)
     // Handling error message based on validation result.
-    if (formDataEmailValidation) handleErrorMessage(formDataEmail.parentElement, true)
-    else handleErrorMessage(formDataEmail.parentElement, false)
+    handleErrorMessage(formDataEmail.parentElement, isFormDataEmailValid)
 
     ////////// BIRTHDATE
     // Defining validation and adding to validation array.
-    let formDataBirthdateValidation = validateTextInput(formDataBirthdate.value, 1)
-    validation.push(formDataBirthdateValidation)
+    let isFormDataBirthdateValid = validateTextInput(formDataBirthdate.value, 1)
+    validation.push(isFormDataBirthdateValid)
     // Handling error message based on validation result.
-    if (formDataBirthdateValidation) handleErrorMessage(formDataBirthdate.parentElement, true)
-    else handleErrorMessage(formDataBirthdate.parentElement, false)
+    handleErrorMessage(formDataBirthdate.parentElement, isFormDataBirthdateValid)
 
     ////////// QUANTITY
     // Defining validation and adding to validation array.
-    let formDataQuantityValidation = validateNumberInput(formDataQuantity.value, 0)
-    validation.push(formDataQuantityValidation)
+    let isFormDataQuantityValid = validateNumberInput(formDataQuantity.value, 0)
+    validation.push(isFormDataQuantityValid)
     // Handling error message based on validation result.
-    if (formDataQuantityValidation) handleErrorMessage(formDataQuantity.parentElement, true)
-    else handleErrorMessage(formDataQuantity.parentElement, false)
+    handleErrorMessage(formDataQuantity.parentElement, isFormDataQuantityValid)
 
     ////////// LOCATION
     // Defining validation and adding to validation array.
-    let formDataLocationValidation = validateRadioInputSection(formDataLocation)
-    validation.push(formDataLocationValidation)
+    let isFormDataLocationValid = validateRadioInputSection(formDataLocation)
+    validation.push(isFormDataLocationValid)
     // Handling error message based on validation result.
-    if (formDataLocationValidation) handleErrorMessage(formDataLocationGroup, true)
-    else handleErrorMessage(formDataLocationGroup, false)
+    handleErrorMessage(formDataLocationGroup, isFormDataLocationValid)
 
     ////////// TERMS
     // Defining validation and adding to validation array.
-    let formDataTermsValidation = validateCheckbox(formDataTerms)
-    validation.push(formDataTermsValidation)
+    let isFormDataTermsValid = validateCheckbox(formDataTerms)
+    validation.push(isFormDataTermsValid)
     // Handling error message based on validation result.
-    if (formDataTermsValidation) handleErrorMessage(formDataTerms.parentElement, true)
-    else handleErrorMessage(formDataTerms.parentElement, false)
+    handleErrorMessage(formDataTerms.parentElement, isFormDataTermsValid)
 
     ////////// TOTAL VALIDATION
     if (validation.filter(input => input === false).length >= 1) return false
@@ -234,7 +223,6 @@ const validateForm = () =>
 ////////// launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// can i make a loop or something not to repeat?
 ////////// Calling close modal function
 closeButton.addEventListener("click", () => 
 {
