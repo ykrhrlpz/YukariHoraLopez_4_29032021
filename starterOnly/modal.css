@@ -200,7 +200,7 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 20% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -579,8 +579,6 @@ footer {
     padding-left: 16px;
     align-self: flex-start;
     margin-top: 10px;
-
-
   }
   .header-logo img 
   {
